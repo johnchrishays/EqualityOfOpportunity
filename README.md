@@ -23,6 +23,10 @@ We use Docker containerization to aid in the reproducibility of the analysis.
 
 ## Scrubbing Data
 
+From the circumstance and outcome data, we want the foloowing columns for each race by gender by parent income cell: `kfr`, `kfr_stycz`, `kfr_top01`, `kfr_top20`, `kfr_[age]`, `kir`, `kir_stycz`, `kir_top01`, `kir_top20`, `kir_[age]`.
+
+Probably we will only really care about the following outcomes: `kir_[age]`.
+
 ## Exploring Data
 
 ## Modeling Data
