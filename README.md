@@ -19,7 +19,13 @@ District level covariates:
 
 ### Docker Container
 
-We use Docker containerization to aid in the reproducibility of the analysis.
+We use Docker containerization to aid in the reproducibility of the analysis. To download docker and read more, visit [https://docs.docker.com/v17.09/engine/installation/](https://docs.docker.com/v17.09/engine/installation/).
+
+Once docker is installed, run the following command to pull my docker image. 
+```
+docker pull johnchrishays/eop
+```
+
 
 ## Scrubbing Data
 
