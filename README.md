@@ -1,5 +1,8 @@
 # Equality of Opportunity: Cross-sectional Education Funding Disparity Experiments
 
+## TODO
+* More precise school district boundaries. Currently we are using school district boundaries from 2013. Ideally, we would like to use those from 2010 (bc that is when the Opportunity Atlas census tracts for outcomes were set.) More accuracy will mean that we won't get noise from school redistricting. Even better, we would like to find geographic relationship files for ~1980 school districts and 2010 census tracts. If can find ~1980 school districts to 1980 census tracts, we could map 1980 census tracts to 2010 census tracts. 
+
 This document describes how to reproduce the cleaning and analysis found here.
 
 ## Setup
@@ -25,7 +28,10 @@ Once docker is installed, run the following command to pull my docker image.
 ```
 docker pull johnchrishays/eop
 ```
-
+Once you have the image, you can build and run it with
+```
+docker build johnchrishays/eop && docker run -it johnchrishays/eop
+```
 
 ## Scrubbing Data
 
@@ -36,5 +42,3 @@ Probably we will only really care about the following outcomes: `kir_[age]`.
 ## Exploring Data
 
 ## Modeling Data
-
-## Interre
