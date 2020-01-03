@@ -13,7 +13,7 @@ YR=13
 if [ ! -e data/orig/GRF${YR}/grf${YR}_lea_tract.csv ]
   then 
     echo "Unzipping GRF${YR}.zip..."
-    unzip data/orig/GRF${YR}.zip -d data/orig/
+    unzip data/orig/GRF${YR}.zip -d data/orig/GRF${YR}/
     sas7bdat_to_csv data/orig/GRF${YR}/grf${YR}_lea_tract.sas7bdat data/orig/GRF${YR}/grf${YR}_lea_tract.csv
     echo "Done."
 fi
