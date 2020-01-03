@@ -9,21 +9,32 @@ if [ ! -e data/orig/tract_outcomes_early.csv ]
 fi
 
 # Unzip crosswalk from tracts to school districts if doesn't exist
-YR=19
-if [ ! -d data/orig/GRF${YR} ]
+YR=13
+if [ ! -e data/orig/GRF${YR}/grf${YR}_lea_tract.csv ]
   then 
     echo "Unzipping GRF${YR}.zip..."
-    unzip data/orig/GRF${13}.zip -d data/orig/
+    unzip data/orig/GRF${YR}.zip -d data/orig/
+    sas7bdat_to_csv data/orig/GRF${YR}/grf${YR}_lea_tract.sas7bdat data/orig/GRF${YR}/grf${YR}_lea_tract.csv
     echo "Done."
 fi
 
-DATA=data/orig/tract_outcomes_early.csv 
 # Get list of column names that we care about
+DATA=data/orig/tract_outcomes_early.csv 
 COLS=$(csvcut -n $DATA | # Extract the column names in <lineno>: <colname> fmt
-	cut -d ":" -f 2- | # Get any line that begins with `kfr` or `kir` 
+	cut -d ":" -f 2- | # Remove <lineno>:
 	cut -c 2- | # Remove first space
 	grep -E "^(tract)|(state)|(county)" | # Get any line that begins with `kfr` or `kir`
 	tr '\n' , | # Replace all newlines with commas
 	sed 's/.$//') # Remove the last comma
 
-csvcut -c $COLS $DATA | head -n 20
+# New derived data directory
+if [ ! -d data/deriv ]
+  then mkdir data/deriv
+fi
+
+# Create a new column `fips` which combines state, county, tract codes into 11 digits used by some sources
+echo "Now adding col fips."
+python3 src/python/add_fips.py ${DATA}
+echo "Done."
+
+#  
