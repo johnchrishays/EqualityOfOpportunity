@@ -12,6 +12,5 @@ RUN apk update && \
     pip3 install -r ./src/python/requirements.txt 
 ADD https://opportunityinsights.org/wp-content/uploads/2018/10/tract_outcomes.zip $pwd/data/orig/
 ADD https://nces.ed.gov/programs/edge/data/GRF13.zip $pwd/data/orig/
-RUN chmod 755 ./src/scripts/clean.sh && \
-    ./src/scripts/clean.sh
+RUN ./src/scripts/clean.sh
 ENTRYPOINT ["/bin/bash"]

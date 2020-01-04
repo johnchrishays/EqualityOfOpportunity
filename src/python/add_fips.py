@@ -13,7 +13,7 @@ with fdopen(fh,'w') as new_file:
         for line in old_file:
             m = re.search(pattern, line)
             gr1, gr2, gr3 = m.groups()
-            new_file.write(line.replace(m.group(0), f"{int(gr1):03}{int(gr2):03}{int(gr3):05},{gr1},{gr2},{gr3}"))
+            new_file.write(line.replace(m.group(0), f"{int(gr1):02}{int(gr2):03}{int(gr3):06},{gr1},{gr2},{gr3}"))
 remove(file_path)
 move(abs_path, file_path)
         

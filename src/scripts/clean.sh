@@ -27,11 +27,6 @@ COLS=$(csvcut -n $DATA | # Extract the column names in <lineno>: <colname> fmt
 	tr '\n' , | # Replace all newlines with commas
 	sed 's/.$//') # Remove the last comma
 
-# New derived data directory
-if [ ! -d data/deriv ]
-  then mkdir data/deriv
-fi
-
 # Create a new column `fips` which combines state, county, tract codes into 11 digits used by some sources
 echo "Now adding col fips."
 python3 src/python/add_fips.py ${DATA}
