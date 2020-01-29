@@ -4,10 +4,7 @@ MAINTAINER Chris Hays
 ARG pwd=/home
 WORKDIR $pwd
 COPY ./src/ ./src/
-RUN apk update && \
-    apk add bash && \
-    apk add python3 && \
-    apk add unzip && \
+RUN apk --update add bash python3 unzip && \
     pip3 install --upgrade pip && \
     pip3 install -r ./src/python/requirements.txt 
 ADD https://opportunityinsights.org/wp-content/uploads/2018/10/tract_outcomes.zip $pwd/data/orig/
